@@ -1,6 +1,10 @@
 package com.backend.entidades;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,8 +18,12 @@ public class Voo {
     private UUID id;
     private String origem;
     private String destino;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataHoraPartida;
-    private LocalDateTime daraHoraChegada;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dataHoraChegada;
 
     @OneToMany(mappedBy = "voo")
     private List<PassagemAerea> passagemAerea;
@@ -23,11 +31,11 @@ public class Voo {
     public Voo() {
     }
 
-    public Voo(String origem, String destino, LocalDateTime dataHoraPartida, LocalDateTime daraHoraChegada) {
+    public Voo(String origem, String destino, LocalDateTime dataHoraPartida, LocalDateTime dataHoraChegada) {
         this.origem = origem;
         this.destino = destino;
         this.dataHoraPartida = dataHoraPartida;
-        this.daraHoraChegada = daraHoraChegada;
+        this.dataHoraChegada = dataHoraChegada;
 
     }
 
@@ -55,6 +63,7 @@ public class Voo {
         this.destino = destino;
     }
 
+    @JsonIgnore
     public List<PassagemAerea> getPassagemAerea() {
         return passagemAerea;
     }
@@ -71,12 +80,12 @@ public class Voo {
         this.dataHoraPartida = dataHoraPartida;
     }
 
-    public LocalDateTime getDaraHoraChegada() {
-        return daraHoraChegada;
+    public LocalDateTime getdataHoraChegada() {
+        return dataHoraChegada;
     }
 
-    public void setDaraHoraChegada(LocalDateTime daraHoraChegada) {
-        this.daraHoraChegada = daraHoraChegada;
+    public void setdataHoraChegada(LocalDateTime dataHoraChegada) {
+        this.dataHoraChegada = dataHoraChegada;
     }
 
     @Override

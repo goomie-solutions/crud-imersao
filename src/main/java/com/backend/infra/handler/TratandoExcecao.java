@@ -39,7 +39,7 @@ public class TratandoExcecao {
 
     @ExceptionHandler(RegistroNaoLocalizadoException.class)
     public ResponseEntity<ErroPadrao> registroNaoLocalizado(RegistroNaoLocalizadoException e) {
-        String erro = "O registro não foi encontrado";
+        String erro = "Registro não encontrado";
         HttpStatus status = HttpStatus.NOT_FOUND;
         ErroPadrao resposta = new ErroPadrao(LocalDateTime.now(), status.value(), erro, e.getMessage());
         return ResponseEntity.status(status).body(resposta);

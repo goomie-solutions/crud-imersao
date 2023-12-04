@@ -16,7 +16,7 @@ public class UsuarioController {
 
 
     // Consulta por id
-    @GetMapping("/{id}") //localhost:8080/usuarios/1
+    @GetMapping("/{id}")
     public ResponseEntity<Usuario> buscaPorId(@PathVariable Long id) {
 
         Usuario resposta = servico.consultaUsuario(id);

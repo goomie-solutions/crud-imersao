@@ -57,7 +57,7 @@ public class UsuarioServico {
         usuarioQueVemDoBancoDeDados.setSenha(requisicao.getSenha());
     }
 
-    private List checaCampos(Usuario usuario) {
+    private List<String> checaCampos(Usuario usuario) {
         List<String> resultado = new ArrayList<>();
 
         if(usuario.getNome() == null) resultado.add("nome");
